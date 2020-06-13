@@ -1,6 +1,5 @@
-node {
-    load 'C:\\Work\\Java\\codemerge\\codemerge.groovy'
-}
+
+load 'C:\\Software\\groovy\\lib\\groovy-xml-2.1.2\\groovy-xml-2.1.2.jar'
 def text = '''
     <list>
         <technology>
