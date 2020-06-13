@@ -23,8 +23,23 @@ pipeline {
                 echo "Choice: ${params.CHOICE}"
 
                 echo "Password: ${params.PASSWORD}"
+            }
+        }
+        stage('Build') {
+            steps {
+                script {
+                    def text = '''
+        <list>
+            <technology>
+            <name>Groovy</name>
+            </technology>
+        </list>
+        '''
+                    def list = new XmlParser().parseText(text)
 
-                load 'C:\\Software\\groovy\\lib\\groovy-xml-2.1.2\\groovy-xml-2.1.2.jar'
+                    assert list instanceof groovy.util.Node
+                    assert list.technology.name.text() == 'Groovy'
+                }
             }
         }
     }
