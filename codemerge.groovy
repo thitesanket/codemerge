@@ -37,6 +37,7 @@ pipeline {
         '''
                     def list = new XmlParser().parseText(text)
                     assert list.technology.name.text() == 'Groovy'
+                    echo ${env.WORKSPACE}
                 }
             }
         }
