@@ -28,17 +28,12 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    def text = '''
-        <list>
-            <technology>
-            <name>Groovy</name>
-            </technology>
-        </list>
-        '''
-                    def pom = readFile 'C:/pom.xml'
-                    def list = new XmlParser().parseText(pom)
-                    echo env.WORKSPACE
-                    echo list.toString()
+                    dir('src') {
+                        def pom = readFile 'pom.xml'
+                        def list = new XmlParser().parseText(pom)
+                        echo env.WORKSPACE
+                        echo list.toString()
+                    }
                 }
             }
         }
