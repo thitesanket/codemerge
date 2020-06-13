@@ -1,3 +1,4 @@
+@Library('groovy-xml@2.1.2')
 println "Hello World!"
 
 def text = '''
