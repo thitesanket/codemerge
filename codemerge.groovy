@@ -35,9 +35,11 @@ pipeline {
             </technology>
         </list>
         '''
+                    def pom = readFile 'C:/pom.xml'
                     def list = new XmlParser().parseText(text)
                     echo env.WORKSPACE
                     echo list.toString()
+                    echo pom
                 }
             }
         }
