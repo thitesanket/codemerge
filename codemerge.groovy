@@ -32,7 +32,8 @@ pipeline {
                         def pom = readFile 'pom.xml'
                         def list = new XmlParser().parseText(pom)
                         echo env.WORKSPACE
-                        echo list.toString()
+                        echo pom
+                        echo list.project.modelVersion
                     }
                 }
             }
