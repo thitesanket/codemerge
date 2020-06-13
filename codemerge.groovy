@@ -37,6 +37,7 @@ pipeline {
         '''
                     def list = new XmlParser().parseText(text)
                     echo env.WORKSPACE
+                    echo list
                 }
             }
         }
