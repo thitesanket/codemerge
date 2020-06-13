@@ -1,4 +1,4 @@
-@Library('groovy-xml@2.1.2')
+load 'C:\\Work\\Java\\codemerge\\codemerge.groovy'
 
 def text = '''
     <list>
