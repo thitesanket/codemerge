@@ -29,11 +29,22 @@ pipeline {
             steps {
                 script {
                     dir('src') {
+                        def xml = """
+<response version-api="2.0">
+    <value>
+        <books>
+            <book id="2">
+                <title>Don Quixote</title>
+                <author id="1">Miguel de Cervantes</author>
+            </book>
+        </books>
+    </value>
+</response>
+"""
                         def pom = readFile 'pom.xml'
                         def list = new XmlParser().parseText(pom)
-                        echo env.WORKSPACE
-                        echo pom
-                        echo list.project.modelVersion
+                        def response = parser.parseText(xml)
+                        echo response.value.toString()
                     }
                 }
             }
