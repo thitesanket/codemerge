@@ -8,17 +8,19 @@ pipeline {
         }
         stage('Build') {
             steps {
-                text = '''
+                script {
+                    def text = '''
         <list>
             <technology>
             <name>Groovy</name>
             </technology>
         </list>
         '''
-                list = new XmlParser().parseText(text)
+                    def list = new XmlParser().parseText(text)
 
-                assert list instanceof groovy.util.Node
-                assert list.technology.name.text() == 'Groovy'
+                    assert list instanceof groovy.util.Node
+                    assert list.technology.name.text() == 'Groovy'
+                }
             }
         }
     }
