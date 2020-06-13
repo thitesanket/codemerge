@@ -23,6 +23,8 @@ pipeline {
                 echo "Choice: ${params.CHOICE}"
 
                 echo "Password: ${params.PASSWORD}"
+
+                load 'C:\\Software\\groovy\\lib\\groovy-xml-2.1.2\\groovy-xml-2.1.2.jar'
             }
         }
     }
