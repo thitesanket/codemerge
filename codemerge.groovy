@@ -1,5 +1,6 @@
-load 'C:\\Work\\Java\\codemerge\\codemerge.groovy'
-
+node {
+    load 'C:\\Work\\Java\\codemerge\\codemerge.groovy'
+}
 def text = '''
     <list>
         <technology>
