@@ -1,26 +1,28 @@
 pipeline {
     agent any
-    stages {
-        stage('Load') {
-            steps {
-                load 'C:\\Software\\groovy\\lib\\groovy-xml-2.1.2\\groovy-xml-2.1.2.jar'
-            }
-        }
-        stage('Build') {
-            steps {
-                script {
-                    def text = '''
-        <list>
-            <technology>
-            <name>Groovy</name>
-            </technology>
-        </list>
-        '''
-                    def list = new XmlParser().parseText(text)
+    parameters {
+        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
 
-                    assert list instanceof groovy.util.Node
-                    assert list.technology.name.text() == 'Groovy'
-                }
+        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
+
+        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+
+        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+
+        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
+    }
+    stages {
+        stage('Example') {
+            steps {
+                echo "Hello ${params.PERSON}"
+
+                echo "Biography: ${params.BIOGRAPHY}"
+
+                echo "Toggle: ${params.TOGGLE}"
+
+                echo "Choice: ${params.CHOICE}"
+
+                echo "Password: ${params.PASSWORD}"
             }
         }
     }
