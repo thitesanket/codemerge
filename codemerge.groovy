@@ -48,7 +48,7 @@ pipeline {
 """
                         def pom = new XmlParser().parseText(xml1)
                         echo "parent version " + pom['parent']['version'].text()
-                        def pomMaven = readMavenPom file: 'src/pom.xml'
+                        def pomMaven = readMavenPom file: 'pom.xml'
 
                     }
                 }
