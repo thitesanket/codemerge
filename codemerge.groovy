@@ -42,7 +42,9 @@ pipeline {
 </project>	
 """
                         def pom = new XmlParser().parseText(xml1)
-                        echo "Parent Version " + pom['name'].text()
+                        echo "Parent Version " + pom.each{
+                            itp -> {echo itp.name()}
+                        }
 
                     }
                 }
