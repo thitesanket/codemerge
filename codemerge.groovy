@@ -48,7 +48,7 @@ pipeline {
 </project>	
 """
                         def pom = new XmlParser().parseText(xml1)
-
+                        echo "Parent Version " + pom.parent.version.text()
 
                     }
                 }
