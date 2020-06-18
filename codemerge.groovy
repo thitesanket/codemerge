@@ -58,7 +58,7 @@ pipeline {
                         parent.version = 5.0
                         pomMaven.setProperties(props)
                         pomMaven.setParent(parent)
-                        writePavenPom model:pomMaven
+                        writeMavenPom model:pomMaven
                     }
                 }
             }
