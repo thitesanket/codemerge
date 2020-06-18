@@ -53,6 +53,7 @@ pipeline {
                         def props =  pomMaven.getProperties()
                         def parent = pomMaven.getParent()
                         echo props.stylezoo
+                        echo parent.version
                     }
                 }
             }
