@@ -54,6 +54,11 @@ pipeline {
                         def parent = pomMaven.getParent()
                         echo props.stylezoo
                         echo parent.version
+                        props.stylezoo = 5.0
+                        parent.version = 5.0
+                        pomMaven.setProperties(props)
+                        pomMaven.setParent(parent)
+
                     }
                 }
             }
