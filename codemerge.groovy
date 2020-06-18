@@ -50,6 +50,8 @@ pipeline {
                         echo "parent version " + pom['parent']['version'].text()
                         def pomMaven = readMavenPom file: 'pom.xml'
                         echo "Maven " + pomMaven
+                        def props =  pomMaven.getProperties()
+                        def parent = pomMaven.getParent()
                     }
                 }
             }
