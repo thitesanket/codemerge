@@ -1,6 +1,12 @@
 import static groovy.io.FileType.FILES
+@NonCPS
 def hello(){
     println("Hello from Function 1")
+    new File('.').eachFileRecurse(FILES) {
+        if(it.name.endsWith('.xml')) {
+            println it
+        }
+    }
     "hello returned"
 }
 pipeline {
@@ -35,11 +41,7 @@ pipeline {
                 script {
                     def fromHello = hello()
                     println fromHello
-                    new File('.').eachFileRecurse(FILES) {
-                        if(it.name.endsWith('.xml')) {
-                            println it
-                        }
-                    }
+
                     dir('src') {
                         echo "Hello World!"
 
