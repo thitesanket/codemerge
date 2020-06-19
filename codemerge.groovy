@@ -1,3 +1,4 @@
+import static groovy.io.FileType.FILES
 pipeline {
     agent any
     parameters {
