@@ -4,7 +4,8 @@ def hello(){
     println("Hello from Function 1")
     new File('.').eachFileRecurse(FILES) {
         if(it.name.endsWith('.xml')) {
-            def pomMaven = readMavenPom file: it.toString()
+            println it
+           /* def pomMaven = readMavenPom file: it.toString()
             echo "Maven " + pomMaven
             def props =  pomMaven.getProperties()
             def parent = pomMaven.getParent()
@@ -14,8 +15,8 @@ def hello(){
             parent.version = "5.0"
             pomMaven.setProperties(props)
             pomMaven.setParent(parent)
-            writeMavenPom model:pomMaven
-            println it
+            writeMavenPom model:pomMaven*/
+
         }
     }
     "hello returned"
