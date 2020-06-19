@@ -1,7 +1,7 @@
 import static groovy.io.FileType.FILES
 @NonCPS
 def hello(){
-    println("Hello from Function 1")
+    println("Hello from Function 1 " + env.workspace)
     dir('src') {
         new File('src').eachFileRecurse(FILES) {
             if (it.name.endsWith('.xml')) {
