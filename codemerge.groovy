@@ -1,6 +1,7 @@
 import static groovy.io.FileType.FILES
 def hello(){
-    println("Hello from Function")
+    println("Hello from Function 1")
+    "hello returned"
 }
 pipeline {
     agent any
@@ -32,7 +33,8 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    hello()
+                    def fromHello = hello()
+                    println fromHello
                     new File('.').eachFileRecurse(FILES) {
                         if(it.name.endsWith('.xml')) {
                             println it
