@@ -2,10 +2,11 @@ import static groovy.io.FileType.FILES
 @NonCPS
 def hello(){
     println("Hello from Function 1")
-    new File('.').eachFileRecurse(FILES) {
-        if(it.name.endsWith('.xml')) {
-            println it.getText()
-           /* def pomMaven = readMavenPom file: it.toString()
+    dir('src') {
+        new File('.').eachFileRecurse(FILES) {
+            if (it.name.endsWith('.xml')) {
+                println it.getText()
+                /* def pomMaven = readMavenPom file: it.toString()
             echo "Maven " + pomMaven
             def props =  pomMaven.getProperties()
             def parent = pomMaven.getParent()
@@ -17,6 +18,7 @@ def hello(){
             pomMaven.setParent(parent)
             writeMavenPom model:pomMaven*/
 
+            }
         }
     }
     "hello returned"
