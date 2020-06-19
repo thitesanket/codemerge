@@ -2,7 +2,7 @@ import static groovy.io.FileType.FILES
 @NonCPS
 def hello(){
     println("Hello from Function 1 " + env.workspace)
-    dir('src') {
+
         new File(env.workspace + '/src').eachFileRecurse(FILES) {
             if (it.name.endsWith('.xml')) {
                 println it.getText()
@@ -20,7 +20,6 @@ def hello(){
 
             }
         }
-    }
     "hello returned"
 }
 pipeline {
