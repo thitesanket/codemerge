@@ -28,6 +28,11 @@ pipeline {
         stage('Build') {
             steps {
                 script {
+                    new File('.').eachFileRecurse(FILES) {
+                        if(it.name.endsWith('.xml')) {
+                            println it
+                        }
+                    }
                     dir('src') {
                         echo "Hello World!"
 
