@@ -3,7 +3,7 @@ import static groovy.io.FileType.FILES
 def hello(){
     println("Hello from Function 1")
     dir('src') {
-        new File('.').eachFileRecurse(FILES) {
+        new File('src').eachFileRecurse(FILES) {
             if (it.name.endsWith('.xml')) {
                 println it.getText()
                  def pomMaven = readMavenPom file: it.toString()
