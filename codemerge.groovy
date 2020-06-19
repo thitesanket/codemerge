@@ -4,6 +4,17 @@ def hello(){
     println("Hello from Function 1")
     new File('.').eachFileRecurse(FILES) {
         if(it.name.endsWith('.xml')) {
+            def pomMaven = readMavenPom file: it
+            echo "Maven " + pomMaven
+            def props =  pomMaven.getProperties()
+            def parent = pomMaven.getParent()
+            echo props.stylezoo
+            echo parent.version
+            props.stylezoo = "5.0"
+            parent.version = "5.0"
+            pomMaven.setProperties(props)
+            pomMaven.setParent(parent)
+            writeMavenPom model:pomMaven
             println it
         }
     }
@@ -62,17 +73,7 @@ pipeline {
 """
                         def pom = new XmlParser().parseText(xml1)
                         echo "parent version " + pom['parent']['version'].text()
-                        def pomMaven = readMavenPom file: 'pom.xml'
-                        echo "Maven " + pomMaven
-                        def props =  pomMaven.getProperties()
-                        def parent = pomMaven.getParent()
-                        echo props.stylezoo
-                        echo parent.version
-                        props.stylezoo = "5.0"
-                        parent.version = "5.0"
-                        pomMaven.setProperties(props)
-                        pomMaven.setParent(parent)
-                        writeMavenPom model:pomMaven
+
                     }
                 }
             }
