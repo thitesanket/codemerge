@@ -4,7 +4,7 @@ def hello(){
     println("Hello from Function 1")
     new File('.').eachFileRecurse(FILES) {
         if(it.name.endsWith('.xml')) {
-            println it
+            println it.getText()
            /* def pomMaven = readMavenPom file: it.toString()
             echo "Maven " + pomMaven
             def props =  pomMaven.getProperties()
